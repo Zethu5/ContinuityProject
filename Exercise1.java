@@ -1,9 +1,6 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
-import resources.Comment;
-import resources.Post;
-import resources.Todo;
-import resources.User;
+import resources.*;
 import resources.user.Address;
 import resources.user.Company;
 import resources.user.Geo;
@@ -98,6 +95,24 @@ public class Exercise1 {
                 jsonObject.get("name").toString(),
                 jsonObject.get("email").toString(),
                 jsonObject.get("body").toString()
+        );
+    }
+
+    public static Photo jsonObjectToPhoto(JSONObject jsonObject) {
+        return new Photo(
+                (int) jsonObject.get("albumId"),
+                (int) jsonObject.get("id"),
+                jsonObject.get("title").toString(),
+                jsonObject.get("url").toString(),
+                jsonObject.get("thumbnailUrl").toString()
+        );
+    }
+
+    public static Album jsonObjectToAlbum(JSONObject jsonObject) {
+        return new Album(
+                (int) jsonObject.get("userId"),
+                (int) jsonObject.get("id"),
+                jsonObject.get("title").toString()
         );
     }
 
@@ -215,5 +230,59 @@ public class Exercise1 {
         }
 
         return usersPostSummary;
+    }
+
+    public static List<Album> getAlbumsByUserId(int userId)
+            throws URISyntaxException, IOException, InterruptedException {
+        final String albumsBaseUrl = "https://jsonplaceholder.typicode.com/albums";
+        List<Album> albums = new ArrayList<>();
+
+        JSONArray userAlbumsJsonArray = new JSONArray(getResponseString(
+                albumsBaseUrl.concat("?userId=")
+                        .concat(String.valueOf(userId))
+        ));
+
+        for(int albumIndex = 0; albumIndex < userAlbumsJsonArray.length(); albumIndex++) {
+            albums.add(jsonObjectToAlbum(userAlbumsJsonArray.getJSONObject(albumIndex)));
+        }
+
+        return albums;
+    }
+
+    public static List<Photo> getPhotosByAlbumId(int albumId)
+            throws URISyntaxException, IOException, InterruptedException {
+        final String photosBaseUrl = "https://jsonplaceholder.typicode.com/photos";
+        List<Photo> albums = new ArrayList<>();
+
+        JSONArray albumPhotosJsonArray = new JSONArray(getResponseString(
+                photosBaseUrl.concat("?albumId=")
+                        .concat(String.valueOf(albumId))
+        ));
+
+        for(int photoIndex = 0; photoIndex < albumPhotosJsonArray.length(); photoIndex++) {
+            albums.add(jsonObjectToPhoto(albumPhotosJsonArray.getJSONObject(photoIndex)));
+        }
+
+        return albums;
+    }
+
+    /*
+    Method that returns all albums of a specific user that contains more photos than a given threshold
+    Corresponds to task 1.d
+    */
+    public static List<Album> getUserAlbumsByThreshold(int userId, int threshold)
+            throws URISyntaxException, IOException, InterruptedException {
+        List<Album> userAlbums = getAlbumsByUserId(userId);
+        List<Album> filteredAlbums = new ArrayList<>();
+
+        for(Album album: userAlbums) {
+            List<Photo> albumPhotos = getPhotosByAlbumId(album.getId());
+
+            if(albumPhotos.size() > threshold) {
+                filteredAlbums.add(album);
+            }
+        }
+
+        return filteredAlbums;
     }
 }
