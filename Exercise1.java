@@ -132,7 +132,7 @@ public class Exercise1 {
     Method that returns the uncompleted tasks of a given user id
     Corresponds to task 1.b
      */
-    public static List<Todo> getUserUncompletedTodoSummaryByUserId(int userId)
+    public List<Todo> getUserUncompletedTodoSummaryByUserId(int userId)
             throws URISyntaxException, IOException, InterruptedException {
         final String todosBaseUrl = "https://jsonplaceholder.typicode.com/todos";
         List<Todo> userTodosList = new ArrayList<>();
@@ -154,7 +154,7 @@ public class Exercise1 {
     Method that returns the summary for each user, his/her uncompleted tasks (todos)
     Corresponds to task 1.a
      */
-    public static Map<User, List<Todo>> getUsersUncompletedTodoSummary()
+    public Map<User, List<Todo>> getUsersUncompletedTodoSummary()
             throws URISyntaxException, IOException, InterruptedException {
         Map<User, List<Todo>> usersTodoSummaryMap = new HashMap<>();
         List<User> users = getUsers();
@@ -207,7 +207,7 @@ public class Exercise1 {
     comment) per each post that the user has posted.
     Corresponds to task 1.c
     */
-    public static Map<User, Map<Post, List<String>>> getUsersPostSummary()
+    public Map<User, Map<Post, List<String>>> getUsersPostSummary()
             throws URISyntaxException, IOException, InterruptedException {
         List<User> users = getUsers();
         Map<Post, List<String>> postEmails = new HashMap<>();
@@ -270,7 +270,7 @@ public class Exercise1 {
     Method that returns all albums of a specific user that contains more photos than a given threshold
     Corresponds to task 1.d
     */
-    public static List<Album> getUserAlbumsByThreshold(int userId, int threshold)
+    public List<Album> getUserAlbumsByThreshold(int userId, int threshold)
             throws URISyntaxException, IOException, InterruptedException {
         List<Album> userAlbums = getAlbumsByUserId(userId);
         List<Album> filteredAlbums = new ArrayList<>();
