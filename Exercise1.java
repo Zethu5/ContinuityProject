@@ -185,7 +185,7 @@ public class Exercise1 {
         return postCommentsEmailsList;
     }
 
-    public static List<Post> getUserPostsByUserId(int userId)
+    public List<Post> getUserPostsByUserId(int userId)
             throws URISyntaxException, IOException, InterruptedException {
         final String postsBaseUrl = "https://jsonplaceholder.typicode.com/posts";
         List<Post> posts = new ArrayList<>();
