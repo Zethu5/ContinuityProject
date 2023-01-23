@@ -1,3 +1,5 @@
+package resources.user;
+
 public class Address {
     private String street;
     private String suite;

@@ -1,14 +1,14 @@
-public class Todo {
+package resources;
+
+public class Album {
     private int userId;
     private int id;
     private String title;
-    private boolean completed;
 
-    public Todo(int userId, int id, String title, boolean completed) {
+    public Album(int userId, int id, String title) {
         this.userId = userId;
         this.id = id;
         this.title = title;
-        this.completed = completed;
     }
 
     public int getUserId() {
@@ -33,13 +33,5 @@ public class Todo {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public boolean getCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
     }
 }

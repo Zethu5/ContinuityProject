@@ -1,3 +1,5 @@
+package resources;
+
 public class Comment {
     private int postId;
     private int id;

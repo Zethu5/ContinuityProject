@@ -1,14 +1,16 @@
-public class Post {
+package resources;
+
+public class Todo {
     private int userId;
     private int id;
     private String title;
-    private String body;
+    private boolean completed;
 
-    public Post(int userId, int id, String title, String body) {
+    public Todo(int userId, int id, String title, boolean completed) {
         this.userId = userId;
         this.id = id;
         this.title = title;
-        this.body = body;
+        this.completed = completed;
     }
 
     public int getUserId() {
@@ -35,11 +37,11 @@ public class Post {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
+    public boolean getCompleted() {
+        return completed;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }

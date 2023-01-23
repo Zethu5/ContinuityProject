@@ -1,12 +1,16 @@
-public class Album {
+package resources;
+
+public class Post {
     private int userId;
     private int id;
     private String title;
+    private String body;
 
-    public Album(int userId, int id, String title) {
+    public Post(int userId, int id, String title, String body) {
         this.userId = userId;
         this.id = id;
         this.title = title;
+        this.body = body;
     }
 
     public int getUserId() {
@@ -31,5 +35,13 @@ public class Album {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

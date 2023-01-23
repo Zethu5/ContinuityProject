@@ -1,3 +1,5 @@
+package resources;
+
 public class Photo {
     private int albumId;
     private int id;

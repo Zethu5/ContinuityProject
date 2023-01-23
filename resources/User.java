@@ -1,3 +1,8 @@
+package resources;
+
+import resources.user.Address;
+import resources.user.Company;
+
 public class User {
     private int id;
     private String name;
