@@ -151,7 +151,8 @@ public class Exercise1 {
         return usersTodoSummaryMap;
     }
 
-    public static List<String> getEmailsOfCommentsByPostId(int postId) throws URISyntaxException, IOException, InterruptedException {
+    public static List<String> getEmailsOfCommentsByPostId(int postId)
+            throws URISyntaxException, IOException, InterruptedException {
         final String commentsBaseUrl = "https://jsonplaceholder.typicode.com/comments";
         List<String> postCommentsEmailsList = new ArrayList<>();
         Comment comment;
