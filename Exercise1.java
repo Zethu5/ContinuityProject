@@ -80,6 +80,18 @@ public class Exercise1 {
         );
     }
 
+    public static List<User> getUsers() throws URISyntaxException, IOException, InterruptedException {
+        final String usersBaseUrl = "https://jsonplaceholder.typicode.com/users";
+        JSONArray usersJsonArray = new JSONArray(getResponseString(usersBaseUrl));
+        List<User> users = new ArrayList<>();
+
+        for(int userIndex = 0; userIndex < usersJsonArray.length(); userIndex++) {
+            users.add(jsonObjectToUser(usersJsonArray.getJSONObject(userIndex)));
+        }
+
+        return users;
+    }
+
     /*
     Method that returns the uncompleted tasks of a given user id
     Corresponds to task 1.b
@@ -108,12 +120,10 @@ public class Exercise1 {
      */
     public static Map<User, List<Todo>> getUsersUncompletedTodoSummary()
             throws URISyntaxException, IOException, InterruptedException {
-        final String usersBaseUrl = "https://jsonplaceholder.typicode.com/users";
         Map<User, List<Todo>> usersTodoSummaryMap = new HashMap<>();
-        JSONArray usersJsonArray = new JSONArray(getResponseString(usersBaseUrl));
+        List<User> users = getUsers();
 
-        for(int userIndex = 0; userIndex < usersJsonArray.length(); userIndex++) {
-            User user = jsonObjectToUser(usersJsonArray.getJSONObject(userIndex));
+        for(User user: users) {
             usersTodoSummaryMap.put(user, getUserUncompletedTodoSummaryByUserId(user.getId()));
         }
 
