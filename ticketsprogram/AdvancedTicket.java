@@ -1,6 +1,6 @@
 package ticketsprogram;
 
-public class AdvancedTicket extends Ticket {
+public abstract class AdvancedTicket extends Ticket {
     private String cveInformation;
 
     protected AdvancedTicket(int id, TicketSeverityEnum severity, String title, String cveInformation) {
