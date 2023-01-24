@@ -63,16 +63,34 @@ public class TicketManager {
     }
 
     public void logSeverityStatistics() {
+        Map<TicketSeverityEnum, Integer> severityMap = new HashMap<>();
+
         for(String ticketType: normalTickets.keySet()) {
-            List<Ticket> tempTickets = normalTickets.get(ticketType);
-            logger.info("There are ".concat(String.valueOf(tempTickets.size()))
-                    .concat(" ").concat(ticketType).concat(" tickets"));
+            for(Ticket ticket: normalTickets.get(ticketType)) {
+                if (!severityMap.containsKey(ticket.getSeverity())) {
+                    severityMap.put(ticket.getSeverity(), 1);
+                } else {
+                    int tempCount = severityMap.get(ticket.getSeverity());
+                    severityMap.replace(ticket.getSeverity(), tempCount + 1);
+                }
+            }
         }
 
         for(String ticketType: advancedTickets.keySet()) {
-            List<AdvancedTicket> tempTickets = advancedTickets.get(ticketType);
-            logger.info("There are ".concat(String.valueOf(tempTickets.size()))
-                    .concat(" ").concat(ticketType).concat(" tickets"));
+            for(AdvancedTicket ticket: advancedTickets.get(ticketType)) {
+                if (!severityMap.containsKey(ticket.getSeverity())) {
+                    severityMap.put(ticket.getSeverity(), 1);
+                } else {
+                    int tempCount = severityMap.get(ticket.getSeverity());
+                    severityMap.replace(ticket.getSeverity(), tempCount + 1);
+                }
+            }
+        }
+
+        for(TicketSeverityEnum severityType: severityMap.keySet()) {
+            int tempTickets = severityMap.get(severityType);
+            logger.info("There are ".concat(String.valueOf(tempTickets))
+                    .concat(" ").concat(String.valueOf(severityType)).concat(" tickets"));
         }
     }
 
