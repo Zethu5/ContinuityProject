@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class TicketManager {
     private static TicketManager instance;
-    private TicketFactory ticketFactory;
+    private final TicketFactory ticketFactory;
     // normal tickets are tickets without cve information
     Map<String, List<Ticket>> normalTickets;
     // advanced tickets are tickets with cve information

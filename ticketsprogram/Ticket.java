@@ -3,9 +3,9 @@ package ticketsprogram;
 import java.util.Date;
 
 public abstract class Ticket {
-    private int id;
+    private final int id;
     private TicketSeverityEnum severity;
-    private Date createDate;
+    private final Date createDate;
     private Date updateDate;
     private String title;
 
