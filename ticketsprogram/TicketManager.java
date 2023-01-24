@@ -49,7 +49,7 @@ public class TicketManager {
         if(!normalTickets.containsKey(ticketType)) return;
 
         List<Ticket> tickets = normalTickets.get(ticketType);
-        tickets.add(ticketFactory.createTicket(ticketType, ticketsCounter, severity, title));
+        tickets.add(ticketFactory.createNormalTicket(ticketType, ticketsCounter, severity, title));
         incrementTicketsCounter();
     }
 
@@ -58,7 +58,7 @@ public class TicketManager {
         if(!advancedTickets.containsKey(ticketType)) return;
 
         List<AdvancedTicket> tickets = advancedTickets.get(ticketType);
-        tickets.add(ticketFactory.createTicket(ticketType, ticketsCounter, severity, title, cveInformation));
+        tickets.add(ticketFactory.createAdvancedTicket(ticketType, ticketsCounter, severity, title, cveInformation));
         incrementTicketsCounter();
     }
 

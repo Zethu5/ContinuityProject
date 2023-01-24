@@ -1,7 +1,7 @@
 package ticketsprogram;
 
 public class TicketFactory {
-    public Ticket createTicket(String ticketType, int id, TicketSeverityEnum severity, String title) {
+    public Ticket createNormalTicket(String ticketType, int id, TicketSeverityEnum severity, String title) {
         /*
         keeping it as switch case because maybe in the future other types of normal tickets would be added
          */
@@ -11,7 +11,7 @@ public class TicketFactory {
         }
     }
 
-    public AdvancedTicket createTicket(
+    public AdvancedTicket createAdvancedTicket(
             String ticketType, int id, TicketSeverityEnum severity, String title, String cveInformation) {
         switch(ticketType) {
             case "Security" -> {return new SecurityTicket(id, severity, title, cveInformation);}
