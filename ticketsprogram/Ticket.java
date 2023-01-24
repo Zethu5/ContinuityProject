@@ -9,7 +9,7 @@ public abstract class Ticket {
     private Date updateDate;
     private String title;
 
-    public Ticket(int id, TicketSeverityEnum severity, String title) {
+    protected Ticket(int id, TicketSeverityEnum severity, String title) {
         this.id = id;
         this.severity = severity;
         this.createDate = new Date();
