@@ -21,29 +21,23 @@ public class Exercise3 {
             String cveType = cveTypes[new Random().nextInt(cveTypes.length)];
 
             switch(ticketType) {
-                case "Security" -> {
-                    ticketManager.createAdvancedTicket(
-                            ticketType,
-                            severity,
-                            "Security ".concat(String.valueOf(i)),
-                            "CVE-2023-".concat(cveType)
-                    );
-                }
-                case "Configuration" -> {
-                    ticketManager.createNormalTicket(
-                            ticketType,
-                            severity,
-                            "Configuration ".concat(String.valueOf(i))
-                    );
-                }
-                case "BestPractice" -> {
-                    ticketManager.createAdvancedTicket(
-                            ticketType,
-                            severity,
-                            "BestPractice ".concat(String.valueOf(i)),
-                            "CVE-2023-".concat(cveType)
-                    );
-                }
+                case "Security" -> ticketManager.createAdvancedTicket(
+                        ticketType,
+                        severity,
+                        "Security ".concat(String.valueOf(i)),
+                        "CVE-2023-".concat(cveType)
+                );
+                case "Configuration" -> ticketManager.createNormalTicket(
+                        ticketType,
+                        severity,
+                        "Configuration ".concat(String.valueOf(i))
+                );
+                case "BestPractice" -> ticketManager.createAdvancedTicket(
+                        ticketType,
+                        severity,
+                        "BestPractice ".concat(String.valueOf(i)),
+                        "CVE-2023-".concat(cveType)
+                );
             }
         }
 
